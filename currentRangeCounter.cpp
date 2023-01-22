@@ -10,10 +10,6 @@
 using namespace std;
 
 
-
-
-
-
 string getContRageCount(string range){
 
     std::stringstream testRange(range);
