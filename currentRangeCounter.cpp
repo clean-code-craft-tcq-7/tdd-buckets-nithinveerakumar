@@ -1,11 +1,10 @@
-#include <stdio.h>
-#include <iostream>
+
 #include <map>
 #include <cstring>
-#include <string>
 #include <list>
 #include <map>
 #include <sstream>
+#include"currentRangeCounter.hpp"
 
 using namespace std;
 
