@@ -24,29 +24,21 @@ string getContRageCount(string range){
         rangeset.push_back(stoi(segment));
     }
     rangeset.sort();
-    int itr=0;
     list <string> rangeMap;
     std::ostringstream oss;
-    int tmp=NULL;
+    int tmp=rangeset.front();
     list <int> test;
      for (auto& rng : rangeset) {
-        if(tmp != NULL)
+
+        if((rng-tmp)>1)
         {
-            if((rng-tmp)>1)
-            {
-                oss<<test.front()<<"-"<<test.back()<<","<<test.size()<<endl;
-                rangeMap.push_back(oss.str());
-                test.clear();
-                //oss.clear();
-            }
-            test.push_back(rng);
-            tmp=rng;
-        }  
-        else
-        {
-            tmp=rng;
-            test.push_back(rng);
+            oss<<test.front()<<"-"<<test.back()<<","<<test.size()<<endl;
+            rangeMap.push_back(oss.str());
+            test.clear();
+            //oss.clear();
         }
+        test.push_back(rng);
+        tmp=rng;
     }
     if(!test.empty())
     {
