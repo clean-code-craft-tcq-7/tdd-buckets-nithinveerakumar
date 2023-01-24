@@ -8,27 +8,31 @@
 
 using namespace std;
 
+list<int> convertStringToList(string range){
+   std::stringstream testRange(range);
+    string segment;
+    list<int> rangeSet;
+    while(getline(testRange, segment, ','))
+    {
+        rangeSet.push_back(stoi(segment));
+    }
+    rangeSet.sort();
+    return rangeSet;
+}
 
 string getContRageCount(string range){
 
-    std::stringstream testRange(range);
-    string segment;
-    list<int> rangeset;
-    while(getline(testRange, segment, ','))
-    {
-        rangeset.push_back(stoi(segment));
-    }
-    rangeset.sort();
-    list <string> rangeMap;
+    list<int> rangeSet = convertStringToList(range);
+    list <string> rangeList;
     std::ostringstream oss;
-    int tmp=rangeset.front();
+    int tmp=rangeSet.front();
     list <int> test;
-     for (auto& rng : rangeset) {
+     for (auto& rng : rangeSet) {
 
         if((rng-tmp)>1)
         {
             oss<<test.front()<<"-"<<test.back()<<","<<test.size()<<endl;
-            rangeMap.push_back(oss.str());
+            rangeList.push_back(oss.str());
             test.clear();
             //oss.clear();
         }
@@ -38,7 +42,7 @@ string getContRageCount(string range){
     if(!test.empty())
     {
         oss<<test.front()<<"-"<<test.back()<<","<<test.size()<<endl;
-        rangeMap.push_back(oss.str());
+        rangeList.push_back(oss.str());
        // oss.clear();
         test.clear();
     }
