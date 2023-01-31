@@ -4,4 +4,4 @@
 
 using namespace std;
 
-string getContRageCount(string);
+string getContinuousRangeCount(string);

@@ -8,44 +8,53 @@
 
 using namespace std;
 
-list<int> convertStringToList(string range){
+list<int> convertStringNumbersToIntList(string range){
    std::stringstream testRange(range);
     string segment;
-    list<int> rangeSet;
+    list<int> rangeList;
     while(getline(testRange, segment, ','))
     {
-        rangeSet.push_back(stoi(segment));
+        rangeList.push_back(stoi(segment));
     }
-    rangeSet.sort();
-    return rangeSet;
+    rangeList.sort();
+    return rangeList;
 }
 
-string getContRageCount(string range){
-
-    list<int> rangeSet = convertStringToList(range);
-    list <string> rangeList;
+string groupRangeList(list<int> rangeList)
+{
+    list <string> rangeListString;
     std::ostringstream oss;
-    int tmp=rangeSet.front();
-    list <int> test;
-     for (auto& rng : rangeSet) {
+    int previousRange=rangeList.front();
+    list <int> tempList;
+     for (auto& currentRange : rangeList) {
 
-        if((rng-tmp)>1)
+        if((currentRange-previousRange)>1)
         {
-            oss<<test.front()<<"-"<<test.back()<<","<<test.size()<<endl;
-            rangeList.push_back(oss.str());
-            test.clear();
+            oss<<tempList.front()<<"-"<<tempList.back()<<","<<tempList.size()<<endl;
+            rangeListString.push_back(oss.str());
+            tempList.clear();
             //oss.clear();
         }
-        test.push_back(rng);
-        tmp=rng;
+        tempList.push_back(currentRange);
+        previousRange=currentRange;
     }
-    if(!test.empty())
+    if(!tempList.empty())
     {
-        oss<<test.front()<<"-"<<test.back()<<","<<test.size()<<endl;
-        rangeList.push_back(oss.str());
+       oss<<tempList.front()<<"-"<<tempList.back()<<","<<tempList.size()<<endl;
+       rangeListString.push_back(oss.str());
        // oss.clear();
-        test.clear();
+        tempList.clear();
     }
-
     return oss.str();
+}
+
+string getContinuousRangeCount(string range){
+
+    list<int> rangeList = convertStringNumbersToIntList(range);
+    if(!rangeList.empty()) {
+        string formattedRangeCount = groupRangeList(rangeList);
+        return formattedRangeCount;
+    } else {
+        return "0";
+    }
 }
