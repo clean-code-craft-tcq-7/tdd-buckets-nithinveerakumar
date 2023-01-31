@@ -1,3 +1,7 @@
+#include <list>
+#include <map>
+#include <cstring>
+#include <sstream>
 #include <stdio.h>
 #include <iostream>
 #include <string>
