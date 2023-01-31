@@ -5,3 +5,5 @@
 using namespace std;
 
 string getContinuousRangeCount(string);
+list<int> convertStringNumbersToIntList(string );
+string groupRangeList(list<int> );
