@@ -1,4 +1,4 @@
-#include"currentRangeCounter.hpp"
+#include"currentRangeCounter.h"
 
 using namespace std;
 
