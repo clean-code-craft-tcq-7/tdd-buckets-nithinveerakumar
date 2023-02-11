@@ -1,0 +1,29 @@
+
+
+Get the continuos current range from given input 
+    Assumption : Input given will be in string format (csv)
+1.write a function to covert string into integer list 
+    function convertStringNumbersToIntList
+2.Group the continuos values in integer list and count numbers in each group 
+    function groupRangeList
+3.Main function which receives the input and give formatted output
+    function getContinuousRangeCount
+    
+Analog to Digital converter
+    Assumption: Input will be given in integer array[bits]
+                invalid values are consider as 0 and return value also will be 0
+1.Get the bits value in the form of integer array and bits length to convert it into digital value(supports both 12bit and 10 bit)
+    function AnalogToDigitalConverter
+2.validate the 12 bit reading , value should range from 0 to 4094
+    function validateReading_12bit
+3.validate the 12 bit reading , value should range from 0 to 1024
+    function validateReading_10bit
+4.convert the digital input to amps 12 bit
+    A reading of 0 means 0A and a reading of 4094 means 10 Amps. The readings in-between are linearly scaled.
+    function digitalToAmps_12bit
+5.convert the digital input to amps 12 bit
+    A reading of 0 means -15 Amps, 1022 means +15 Amps and 511 means no current.
+    function digitalToAmps_10bit
+6.Get the input in bits array and return the corrsponding current value
+    function getValidAmpsFromInputBits
+    uses the function AnalogToDigitalConverter and corresponding digitalToAmps converter 
